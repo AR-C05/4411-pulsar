@@ -1,1 +1,2 @@
-~/apache-pulsar-3.1.1/bin/pulsar standalone
+PulsarRootFolder=~/apache-pulsar-3.1.1
+$PulsarRootFolder/bin/pulsar standalone
