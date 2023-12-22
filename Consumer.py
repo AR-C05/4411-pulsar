@@ -7,7 +7,7 @@ topic = 'test-topic'
 subscription = 'test-subscription'
 
 client = Client(service_url)
-consumer = client.subscribe(topic, subscription_name=subscription, consumer_type=ConsumerType.Shared,  negative_ack_redelivery_delay_ms=5000)
+consumer = client.subscribe(topic, subscription_name=subscription, consumer_type=ConsumerType.Shared,  negative_ack_redelivery_delay=5000)
 
 def exit_handler(signal, frame):
     # to ensure an error-free exit
@@ -21,7 +21,8 @@ def process_message(msg: Message):
     try:
         # Process the message
         print(f"Received message: {msg.data().decode('utf-8')}")
-        
+        consumer.acknowledge(msg)
+
         # Simulate processing error for demonstration
         if "error" in msg.data().decode('utf-8'):
             raise ValueError("Simulated processing error")
