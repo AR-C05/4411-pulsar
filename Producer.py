@@ -12,8 +12,7 @@ batch_interval = 5
 # Generate and send messages
 for i in range(batch_size):  # Change the number of messages as needed
     message = "Message {}".format(i)
-
-    producer.send_async(message.encode('utf-8'))
+    producer.send(message.encode('utf-8'))
 
     # Batch messages and send after reaching the specified batch size
     if (i + 1) % batch_size == 0:
