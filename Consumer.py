@@ -18,9 +18,21 @@ def exit_handler(signal, frame):
 signal.signal(signal.SIGINT, exit_handler)
 
 def process_message(msg: Message):
-    consumer.negative_acknowledge(msg)
-    msg = consumer.receive()
-    consumer.acknowledge(msg)
+    try:
+        # Process the message
+        print(f"Received message: {msg.data().decode('utf-8')}")
+        consumer.acknowledge(msg)
+
+        # Simulate processing error for demonstration
+        if "error" in msg.data().decode('utf-8'):
+            raise ValueError("Simulated processing error")
+
+    except Exception as e:
+        # Handle processing errors
+        print(f"Error processing message: {e}")
+        
+        # Negative acknowledgment (NACK) to indicate a processing error
+        consumer.negative_acknowledge(msg)
 
 try:
     while True:

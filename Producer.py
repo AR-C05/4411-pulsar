@@ -1,5 +1,4 @@
-from pulsar import Client, Message
-import time
+from pulsar import Client
 
 service_url = 'pulsar://localhost:6650'
 topic = 'test-topic'
