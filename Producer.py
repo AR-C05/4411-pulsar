@@ -4,7 +4,7 @@ service_url = 'pulsar://localhost:6650'
 topic = 'test-topic'
 
 client = Client(service_url)
-producer = client.create_producer(topic)
+producer = client.create_producer(topic, compression_type='lz4')
 
 # Generate and send messages
 for i in range(1000):  # Change the number of messages as needed
