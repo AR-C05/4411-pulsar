@@ -18,9 +18,9 @@ def exit_handler(signal, frame):
 signal.signal(signal.SIGINT, exit_handler)
 
 def process_message(msg: Message):
-    consumer.negative_acknowledge(msg);
-    msg = consumer.receive();
-    consumer.acknowledge(msg);
+    consumer.negative_acknowledge(msg)
+    msg = consumer.receive()
+    consumer.acknowledge(msg)
 
 try:
     while True:
