@@ -1,7 +1,7 @@
 from pulsar import Client, ConsumerType
 
 service_url = 'pulsar://localhost:6650'
-topic = 'test-topic2'
+topic = 'partitionedTopic'
 
 client = Client(service_url)
 
@@ -11,8 +11,7 @@ for i in range(4):
     consumer = client.subscribe(
         topic,
         subscription_name=f'sub-{i}',
-        consumer_type=ConsumerType.Shared,
-        subscription_topics=[f'persistent://public/default/partitioned-topic-partition-{i}']
+        consumer_type=ConsumerType.Shared
     )
     consumers.append(consumer)
 
