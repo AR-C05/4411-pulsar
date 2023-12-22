@@ -1,4 +1,4 @@
-from pulsar import Client, Message
+from pulsar import Client, CompressionType
 
 service_url = 'pulsar://localhost:6650'
 topic = 'test-topic'
