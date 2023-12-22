@@ -1,0 +1,53 @@
+2023-12-22T15:33:32,167-0500 [main] INFO  org.apache.pulsar.testclient.PerformanceConsumer - JVM args [-Dlog4j.configurationFile=log4j2.yaml, -Djava.net.preferIPv4Stack=true, --add-opens=java.base/sun.net=ALL-UNNAMED, --add-opens=java.base/java.lang=ALL-UNNAMED, -Dpulsar.allocator.exit_on_oom=true, -Dio.netty.recycler.maxCapacityPerThread=4096, -Dpulsar.log.appender=Console, -Dpulsar.log.level=info, -Dpulsar.log.root.level=info, -Dpulsar.log.immediateFlush=false, -Dpulsar.log.dir=/home/arc/apache-pulsar-3.1.1/logs, -Dpulsar.log.file=pulsar-perftest.log]
+2023-12-22T15:33:32,323-0500 [main] INFO  org.apache.pulsar.testclient.PerformanceConsumer - Netty max memory (PlatformDependent.maxDirectMemory()) 1 GB
+2023-12-22T15:33:32,324-0500 [main] INFO  org.apache.pulsar.testclient.PerformanceConsumer - JVM max heap memory (Runtime.getRuntime().maxMemory()) 1 GB
+2023-12-22T15:33:32,501-0500 [main] INFO  org.apache.pulsar.testclient.PerformanceConsumer - Starting Pulsar performance consumer with config: {
+  "confFile" : "/home/arc/apache-pulsar-3.1.1/conf/client.conf",
+  "serviceURL" : "pulsar://localhost:6650",
+  "authPluginClassName" : "",
+  "authParams" : "",
+  "tlsTrustCertsFilePath" : "",
+  "tlsAllowInsecureConnection" : false,
+  "tlsHostnameVerificationEnable" : false,
+  "maxConnections" : 1,
+  "statsIntervalSeconds" : 0,
+  "ioThreads" : 1,
+  "enableBusyWait" : false,
+  "listenerName" : null,
+  "listenerThreads" : 1,
+  "maxLookupRequest" : 50000,
+  "deprecatedAuthPluginClassName" : null,
+  "topics" : [ "persistent://public/default/test-topic" ],
+  "numTopics" : 1,
+  "numConsumers" : 1,
+  "numSubscriptions" : 1,
+  "subscriberName" : "test-sub",
+  "subscriptions" : [ "sub" ],
+  "subscriptionType" : "Exclusive",
+  "rate" : 0.0,
+  "receiverQueueSize" : 1000,
+  "maxTotalReceiverQueueSizeAcrossPartitions" : 50000,
+  "autoScaledReceiverQueueSize" : false,
+  "replicatedSubscription" : false,
+  "acknowledgmentsGroupingDelayMillis" : 100,
+  "numMessages" : 0,
+  "encKeyFile" : null,
+  "testTime" : 0,
+  "batchIndexAck" : false,
+  "transactionTimeout" : 10,
+  "numMessagesPerTransaction" : 50,
+  "isEnableTransaction" : false,
+  "totalNumTxn" : 0,
+  "isAbortTransaction" : false,
+  "histogramFile" : null
+}
+2023-12-22T15:33:33,319-0500 [main] INFO  org.apache.pulsar.testclient.PerformanceConsumer - Adding 1 consumers per subscription on topic persistent://public/default/test-topic
+2023-12-22T15:33:33,643-0500 [pulsar-client-io-1-1] INFO  org.apache.pulsar.client.impl.ConnectionPool - [[id: 0xe9fa04db, L:/127.0.0.1:46146 - R:localhost/127.0.0.1:6650]] Connected to server
+2023-12-22T15:33:33,871-0500 [pulsar-client-io-1-1] INFO  org.apache.pulsar.client.impl.ConsumerImpl - [persistent://public/default/test-topic][sub] Subscribing to topic on cnx [id: 0xe9fa04db, L:/127.0.0.1:46146 - R:localhost/127.0.0.1:6650], consumerId 0
+2023-12-22T15:33:33,903-0500 [pulsar-client-io-1-1] INFO  org.apache.pulsar.client.impl.ConsumerImpl - [persistent://public/default/test-topic][sub] Subscribed to topic on localhost/127.0.0.1:6650 -- consumer: 0
+2023-12-22T15:33:33,907-0500 [main] INFO  org.apache.pulsar.testclient.PerformanceConsumer - Start receiving from 1 consumers per subscription on 1 topics
+2023-12-22T15:33:43,954-0500 [main] INFO  org.apache.pulsar.testclient.PerformanceConsumer - Throughput received:   42600 msg --- 4259.935  msg/s --- 32.501 Mbit/s  --- Latency: mean: 92.208 ms - med: 16 - 95pct: 279 - 99pct: 292 - 99.9pct: 294 - 99.99pct: 295 - Max: 295
+2023-12-22T15:33:53,973-0500 [main] INFO  org.apache.pulsar.testclient.PerformanceConsumer - Throughput received:  143138 msg --- 9999.752  msg/s --- 76.292 Mbit/s  --- Latency: mean: 26.026 ms - med: 10 - 95pct: 116 - 99pct: 430 - 99.9pct: 514 - 99.99pct: 524 - Max: 524
+2023-12-22T15:34:03,984-0500 [main] INFO  org.apache.pulsar.testclient.PerformanceConsumer - Throughput received:  243341 msg --- 10005.830  msg/s --- 76.338 Mbit/s  --- Latency: mean: 10.033 ms - med: 9 - 95pct: 14 - 99pct: 53 - 99.9pct: 138 - 99.99pct: 147 - Max: 147
+2023-12-22T15:34:13,995-0500 [main] INFO  org.apache.pulsar.testclient.PerformanceConsumer - Throughput received:  343425 msg --- 9997.386  msg/s --- 76.274 Mbit/s  --- Latency: mean: 54.521 ms - med: 9 - 95pct: 474 - 99pct: 810 - 99.9pct: 875 - 99.99pct: 885 - Max: 885
+2023-12-22T15:34:24,007-0500 [main] INFO  org.apache.pulsar.testclient.PerformanceConsumer - Throughput received:  443598 msg --- 10006.447  msg/s --- 76.343 Mbit/s  --- Latency: mean: 10.766 ms - med: 9 - 95pct: 14 - 99pct: 114 - 99.9pct: 196 - 99.99pct: 205 - Max: 205

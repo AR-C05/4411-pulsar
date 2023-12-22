@@ -1,0 +1,69 @@
+2023-12-22T15:33:37,946-0500 [main] INFO  org.apache.pulsar.testclient.PerformanceProducer - JVM args [-Dlog4j.configurationFile=log4j2.yaml, -Djava.net.preferIPv4Stack=true, --add-opens=java.base/sun.net=ALL-UNNAMED, --add-opens=java.base/java.lang=ALL-UNNAMED, -Dpulsar.allocator.exit_on_oom=true, -Dio.netty.recycler.maxCapacityPerThread=4096, -Dpulsar.log.appender=Console, -Dpulsar.log.level=info, -Dpulsar.log.root.level=info, -Dpulsar.log.immediateFlush=false, -Dpulsar.log.dir=/home/arc/apache-pulsar-3.1.1/logs, -Dpulsar.log.file=pulsar-perftest.log]
+2023-12-22T15:33:38,049-0500 [main] INFO  org.apache.pulsar.testclient.PerformanceProducer - Netty max memory (PlatformDependent.maxDirectMemory()) 1 GB
+2023-12-22T15:33:38,050-0500 [main] INFO  org.apache.pulsar.testclient.PerformanceProducer - JVM max heap memory (Runtime.getRuntime().maxMemory()) 1 GB
+2023-12-22T15:33:38,271-0500 [main] INFO  org.apache.pulsar.testclient.PerformanceProducer - Starting Pulsar perf producer with config: {
+  "confFile" : "/home/arc/apache-pulsar-3.1.1/conf/client.conf",
+  "serviceURL" : "pulsar://localhost:6650",
+  "authPluginClassName" : "",
+  "authParams" : "",
+  "tlsTrustCertsFilePath" : "",
+  "tlsAllowInsecureConnection" : false,
+  "tlsHostnameVerificationEnable" : false,
+  "maxConnections" : 1,
+  "statsIntervalSeconds" : 0,
+  "ioThreads" : 1,
+  "enableBusyWait" : false,
+  "listenerName" : null,
+  "listenerThreads" : 1,
+  "maxLookupRequest" : 50000,
+  "deprecatedAuthPluginClassName" : null,
+  "topics" : [ "persistent://public/default/test-topic" ],
+  "numTopics" : 1,
+  "numTestThreads" : 1,
+  "msgRate" : 10000,
+  "msgSize" : 1000,
+  "numProducers" : 1,
+  "separator" : "-",
+  "sendTimeout" : 0,
+  "producerName" : null,
+  "adminURL" : "http://localhost:8080/",
+  "maxOutstanding" : 0,
+  "maxPendingMessagesAcrossPartitions" : 0,
+  "partitions" : null,
+  "numMessages" : 0,
+  "compression" : "NONE",
+  "payloadFilename" : null,
+  "payloadDelimiter" : "\\n",
+  "batchTimeMillis" : 1.0,
+  "disableBatching" : false,
+  "batchMaxMessages" : 1000,
+  "batchMaxBytes" : 4194304,
+  "testTime" : 0,
+  "warmupTimeSeconds" : 1.0,
+  "encKeyName" : null,
+  "encKeyFile" : null,
+  "delay" : 0,
+  "delayRange" : null,
+  "setEventTime" : false,
+  "exitOnFailure" : false,
+  "messageKeyGenerationMode" : null,
+  "producerAccessMode" : "Shared",
+  "formatPayload" : false,
+  "formatterClass" : "org.apache.pulsar.testclient.DefaultMessageFormatter",
+  "transactionTimeout" : 10,
+  "numMessagesPerTransaction" : 50,
+  "isEnableTransaction" : false,
+  "isAbortTransaction" : false,
+  "histogramFile" : null
+}
+2023-12-22T15:33:38,293-0500 [pulsar-perf-producer-exec-1-1] INFO  org.apache.pulsar.testclient.PerformanceProducer - Started performance test thread 0
+2023-12-22T15:33:39,125-0500 [pulsar-perf-producer-exec-1-1] INFO  org.apache.pulsar.testclient.PerformanceProducer - Adding 1 publishers on topic persistent://public/default/test-topic
+2023-12-22T15:33:39,400-0500 [pulsar-client-io-2-1] INFO  org.apache.pulsar.client.impl.ConnectionPool - [[id: 0x074ff043, L:/127.0.0.1:38708 - R:localhost/127.0.0.1:6650]] Connected to server
+2023-12-22T15:33:39,590-0500 [pulsar-client-io-2-1] INFO  org.apache.pulsar.client.impl.ProducerImpl - [persistent://public/default/test-topic] [null] Creating producer on cnx [id: 0x074ff043, L:/127.0.0.1:38708 - R:localhost/127.0.0.1:6650]
+2023-12-22T15:33:39,622-0500 [pulsar-client-io-2-1] INFO  org.apache.pulsar.client.impl.ProducerImpl - [persistent://public/default/test-topic] [standalone-79-4] Created producer on cnx [id: 0x074ff043, L:/127.0.0.1:38708 - R:localhost/127.0.0.1:6650]
+2023-12-22T15:33:39,642-0500 [pulsar-perf-producer-exec-1-1] INFO  org.apache.pulsar.testclient.PerformanceProducer - Created 1 producers
+2023-12-22T15:33:48,473-0500 [main] INFO  org.apache.pulsar.testclient.PerformanceProducer - Throughput produced:   86466 msg ---   8646.6 msg/s ---     66.0 Mbit/s  --- failure      0.0 msg/s --- Latency: mean:  24.139 ms - med:   4.210 - 95pct: 136.747 - 99pct: 427.541 - 99.9pct: 494.965 - 99.99pct: 500.699 - Max: 501.627
+2023-12-22T15:33:58,519-0500 [main] INFO  org.apache.pulsar.testclient.PerformanceProducer - Throughput produced:  188496 msg ---  10001.3 msg/s ---     76.3 Mbit/s  --- failure      0.0 msg/s --- Latency: mean:   5.351 ms - med:   3.188 - 95pct:   7.433 - 99pct:  90.358 - 99.9pct: 133.649 - 99.99pct: 138.084 - Max: 138.117
+2023-12-22T15:34:08,563-0500 [main] INFO  org.apache.pulsar.testclient.PerformanceProducer - Throughput produced:  289115 msg ---  10004.7 msg/s ---     76.3 Mbit/s  --- failure      0.0 msg/s --- Latency: mean:   2.975 ms - med:   2.922 - 95pct:   4.193 - 99pct:   7.225 - 99.9pct:  16.843 - 99.99pct:  17.831 - Max:  18.885
+2023-12-22T15:34:18,604-0500 [main] INFO  org.apache.pulsar.testclient.PerformanceProducer - Throughput produced:  389338 msg ---  10001.5 msg/s ---     76.3 Mbit/s  --- failure      0.0 msg/s --- Latency: mean:  48.182 ms - med:   2.964 - 95pct: 439.059 - 99pct: 782.731 - 99.9pct: 862.123 - 99.99pct: 871.191 - Max: 871.215
+2023-12-22T15:34:28,630-0500 [main] INFO  org.apache.pulsar.testclient.PerformanceProducer - Throughput produced:  489802 msg ---  10004.3 msg/s ---     76.3 Mbit/s  --- failure      0.0 msg/s --- Latency: mean:   9.453 ms - med:   2.881 - 95pct:  22.516 - 99pct: 201.957 - 99.9pct: 279.749 - 99.99pct: 288.243 - Max: 288.315
