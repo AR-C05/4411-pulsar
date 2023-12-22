@@ -1,7 +1,7 @@
 from pulsar import Client, ConsumerType
 
 service_url = 'pulsar://localhost:6650'
-topic = 'partitioned-topic'
+topic = 'test-topic2'
 
 client = Client(service_url)
 
