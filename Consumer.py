@@ -1,26 +1,34 @@
 from pulsar import Client, ConsumerType
-import signal
-import sys
 
 service_url = 'pulsar://localhost:6650'
-topic = 'test-topic'
-subscription = 'test-subscription'
+topic = 'partitioned-topic'
 
 client = Client(service_url)
-consumer = client.subscribe(topic, subscription_name=subscription, consumer_type=ConsumerType.Shared)
 
-def exit_handler(signal, frame):
-    # to ensure an error-free exit
-    consumer.close()
-    client.close()
-    sys.exit(0)
+# Create consumers for specific partitions
+consumers = []
+for i in range(4):
+    consumer = client.subscribe(
+        topic,
+        subscription_name=f'sub-{i}',
+        consumer_type=ConsumerType.Shared,
+        subscription_topics=[f'persistent://public/default/partitioned-topic-partition-{i}']
+    )
+    consumers.append(consumer)
 
-signal.signal(signal.SIGINT, exit_handler)
-
+# Consume messages from specific partitions
 try:
     while True:
-        msg = consumer.receive()  # Receive messages
-        print("Received message: %s" % msg.data())
-        consumer.acknowledge(msg)  # Acknowledge the message
+        for i, consumer in enumerate(consumers):
+            msg = consumer.receive()
+            if msg:
+                print(f"Consumer {i} received: {msg.data().decode('utf-8')}")
+                consumer.acknowledge(msg)
+
 except KeyboardInterrupt:
-    exit_handler(signal.SIGINT, None)
+    pass
+finally:
+    # Close the consumers and client
+    for consumer in consumers:
+        consumer.close()
+    client.close()
