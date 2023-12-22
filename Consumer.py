@@ -25,13 +25,11 @@ try:
         try:
             # Process the message
             print(f"Received message: {msg.data().decode('utf-8')}")
-            # Acknowledge the message to mark it as processed
-            consumer.acknowledge(msg)
         except Exception as e:
             # Handle processing errors
             print(f"Error processing message: {e}")
             # Don't acknowledge the message, allowing for redelivery
         finally:
-            consumer.acknowledge_cumulative(msg)  # Acknowledge the message
+            consumer.acknowledge(msg)  # Acknowledge the message
 except KeyboardInterrupt:
     exit_handler(signal.SIGINT, None)

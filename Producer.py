@@ -5,8 +5,8 @@ service_url = 'pulsar://localhost:6650'
 topic = 'test-topic'
 
 client = Client(service_url)
-producer = client.create_producer(topic)
-batch_size = 10
+producer = client.create_producer(topic, batching_enabled=True,batching_max_messages=10)
+batch_size = 100
 batch_interval = 5
 
 # Generate and send messages
