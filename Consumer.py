@@ -7,7 +7,7 @@ topic = 'test-topic'
 subscription = 'test-subscription'
 
 client = Client(service_url)
-consumer = client.subscribe(topic, subscription_name=subscription, consumer_type=ConsumerType.Shared,  negative_ack_redelivery_delay=5000)
+consumer = client.subscribe(topic, subscription_name=subscription, consumer_type=ConsumerType.Shared,  negative_ack_redelivery_delay_ms=5000)
 
 def exit_handler(signal, frame):
     # to ensure an error-free exit

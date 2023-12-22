@@ -10,7 +10,7 @@ producer = client.create_producer(topic, batching_enabled=True)
 # Generate and send messages
 for i in range(1000):  # Change the number of messages as needed
     message = "Message {}".format(i)
-    producer.send(message.encode('utf-8'))
+    producer.send_async(message.encode('utf-8'), callback=None)
 
 
 producer.flush()
