@@ -1,12 +1,23 @@
-from pulsar import Client, Message
+from pulsar import Client, time
 
 service_url = 'pulsar://localhost:6650'
 topic = 'test-topic'
 
 client = Client(service_url)
 producer = client.create_producer(topic)
+batch_size = 10
+batch_interval = 5
 
 # Generate and send messages
-for i in range(1000):  # Change the number of messages as needed
+for i in range(batch_size):  # Change the number of messages as needed
     message = "Message {}".format(i)
-    producer.send(message.encode('utf-8'))
+
+    producer.send_async(message.encode('utf-8'))
+
+    # Batch messages and send after reaching the specified batch size
+    if (i + 1) % batch_size == 0:
+        producer.flush()
+
+    # Introduce a delay for batching based on time interval
+    if (i + 1) % batch_interval == 0:
+        time.sleep(1)  # Adjust the sleep duration as needed
