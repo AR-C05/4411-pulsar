@@ -6,8 +6,8 @@ topic = 'test-topic'
 
 client = Client(service_url)
 producer = client.create_producer(topic, batching_enabled=True,batching_max_messages=10)
-batch_size = 100
-batch_interval = 5
+batch_size = 1000
+batch_interval = 10
 
 # Generate and send messages
 for i in range(batch_size):  # Change the number of messages as needed
