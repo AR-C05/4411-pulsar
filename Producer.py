@@ -1,10 +1,10 @@
-from pulsar import Client
+from pulsar import Client, MessageRoutingMode
 
 service_url = 'pulsar://localhost:6650'
 topic = 'partitionedTopic'
 
 client = Client(service_url)
-producer = client.create_producer(topic)
+producer = client.create_producer(topic, message_routing_mode=MessageRoutingMode.RoundRobinDistribution)
 
 # Generate and send messages
 for i in range(10000):  # Change the number of messages as needed
