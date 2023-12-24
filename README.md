@@ -14,7 +14,7 @@ Start a standalone cluster: `./startStandalone`
 \- stays on throughout  
 
 if running for the first time, then create a topic  
-\- \*\*\*note that the provided `Producer.py` and `Consumer.py` use the default topic created by `createTopicDefault.py`, and must be modified if topic created using `createTopicModular`  
+\- \*\*\*note that the provided `Producer.py` and `Consumer.py` use the default topic created by `createTopicDefault`, and must be modified if topic created using `createTopicModular`  
 
 start consumer using `startConsumer.sh`  
 start producer using `startProducer.sh`  
