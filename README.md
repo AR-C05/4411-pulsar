@@ -27,7 +27,7 @@ MAIN branch:
 
 PARTITIONS branch:  
 \- requires a partition type topic explicitly created before use  
-\- use `createPartitionedTopicModular.sh` 
+\- use `createPartitionedTopicModular.sh`  
 \- has multiple consumers  
 
 COMPRESSION branch:  
